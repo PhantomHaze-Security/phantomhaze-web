@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PhantomHaze Extensions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Open Sans',sans-serif;
+    background:#0f1115;
+    color:#ffffff;
+    line-height:1.6;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.home-button{
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:1000;
+
+    display:inline-block;
+    background:#232833;
+    color:white;
+    text-decoration:none;
+    padding:12px 20px;
+    border-radius:12px;
+    transition:.2s;
+    border:1px solid #313848;
+}
+
+.home-button:hover{
+    background:#313848;
+}
+
+.hero{
+    text-align:center;
+    padding:100px 0 60px;
+}
+
+.hero h1{
+    font-size:4rem;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:#b8bcc7;
+    font-size:1.2rem;
+    max-width:700px;
+    margin:auto;
+}
+
+.creator{
+    margin-top:20px;
+    background:#171b22;
+    border:1px solid #262c38;
+    border-radius:20px;
+    padding:30px;
+}
+
+.creator h2{
+    margin-bottom:15px;
+    font-size:2rem;
+}
+
+.creator-row{
+    display:flex;
+    gap:12px;
+}
+
+.creator-row input{
+    flex:1;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#222836;
+    color:white;
+    font-size:16px;
+    outline:none;
+}
+
+.creator-row input::placeholder{
+    color:#8d95a8;
+}
+
+.creator-row button{
+    padding:15px 24px;
+    border:none;
+    border-radius:12px;
+    background:#ffffff;
+    color:#000;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.creator-row button:hover{
+    opacity:.9;
+}
+
+.powered{
+    margin-top:16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#9ea6b9;
+}
+
+.powered img{
+    width:18px;
+    height:18px;
+}
+
+.section-title{
+    margin-top:80px;
+    margin-bottom:30px;
+    font-size:2.5rem;
+    font-weight:700;
+    text-align:center;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#171b22;
+    border:1px solid #262c38;
+    border-radius:18px;
+    padding:25px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#b8bcc7;
+}
+
+footer{
+    margin-top:80px;
+    text-align:center;
+    color:#798092;
+    padding-bottom:40px;
+}
+</style>
+</head>
+<body>
+
+<a
+    class="home-button"
+    href="https://phantomhaze-security.github.io/phantomhaze-web/"
+>
+    ← Back to Homepage
+</a>
+
+<div class="container">
+
+    <section class="hero">
+        <h1>Say hello to PhantomHaze Extensions</h1>
+
+        <p>
+            Extend PhantomHaze with custom pages, menu buttons,
+            UI enhancements, scripts, styles, dashboards,
+            web blocking rules and much more using simple
+            PhantomScript extension files.
+        </p>
+    </section>
+
+    <section class="creator">
+
+        <h2>Ready to make your own?</h2>
+
+        <div class="creator-row">
+
+            <input
+                type="text"
+                id="extensionPrompt"
+                placeholder="Describe your extension"
+                onkeydown="if(event.key==='Enter') createExtension()"
+            >
+
+            <button onclick="createExtension()">
+                Create
+            </button>
+
+        </div>
+
+        <div class="powered">
+            <img
+                src="https://claude.com/static/product-overview/marks/claude.svg"
+                alt="Claude"
+            >
+            <span>Powered by Claude</span>
+        </div>
+
+    </section>
+
+    <h2 class="section-title">
+        How Extensions Work
+    </h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>📄 Plain Text Extensions</h3>
+            <p>
+                PhantomHaze extensions use the .phext format.
+                They are simple text files that can be imported
+                through Settings → Extensions → Import Extension.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>⚙️ Extension Settings</h3>
+            <p>
+                Create configurable toggles, text boxes,
+                dropdowns and number inputs that users
+                can customise directly from Settings.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>📑 Custom Pages</h3>
+            <p>
+                Add completely new pages that appear alongside
+                Logs and Web View, allowing you to build
+                dashboards, tools and information panels.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🎨 UI Customisation</h3>
+            <p>
+                Restyle menu items, change colours,
+                replace controls with SVG graphics and
+                create a unique PhantomHaze experience.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🌐 Web Scripts & CSS</h3>
+            <p>
+                Inject JavaScript and CSS into websites
+                to automate tasks, modify layouts or
+                create entirely new functionality.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🛡️ Privacy & Blocking</h3>
+            <p>
+                Block trackers, unwanted domains and
+                other web resources using built-in
+                PhantomScript commands.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        PhantomHaze Extensions • Powered by PhantomScript & Claude
+    </footer>
+
+</div>
+
+<script>
+function createExtension() {
+
+    const userPrompt =
+        document.getElementById("extensionPrompt")
+        .value
+        .trim();
+
+    if (!userPrompt) {
+        alert("Please describe your extension.");
+        return;
+    }
+
+    const finalPrompt =
+        "Make me a PhantomHaze extension (you can access the wiki here: https://raw.githubusercontent.com/PhantomHaze-Security/phantomhaze-extensions/refs/heads/main/claude-integration.md) that " +
+        userPrompt;
+
+    const query =
+        finalPrompt
+        .split(/\s+/)
+        .join("+");
+
+    window.open(
+        "https://claude.ai/new?q=" + query,
+        "_blank",
+        "noopener,noreferrer"
+    );
+}
+</script>
+
+</body>
+</html>
