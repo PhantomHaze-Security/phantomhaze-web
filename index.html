@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhantomHaze</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #050505;
+            color: white;
+            font-family: "Segoe UI", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            width: 220px;
+            max-width: 80%;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
+        }
+
+        h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            margin-bottom: 30px;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            text-decoration: none;
+            color: white;
+            background: #111;
+            border: 2px solid #222;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/logo.jpg" alt="PhantomHaze Logo" class="logo">
+
+        <h1>Total Digital Evaporation</h1>
+
+        <div class="buttons">
+            <a class="btn"
+               href="https://phantomhaze-security.github.io/phantomhaze-web/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Overview
+            </a>
+
+            <a class="btn"
+               href="https://phantomhaze-security.github.io/phantomhaze-web/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Extensions
+            </a>
+        </div>
+    </div>
+</body>
+</html>
