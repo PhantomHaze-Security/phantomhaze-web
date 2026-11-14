@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>PhantomHaze Extensions</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +34,6 @@ body{
     top:20px;
     left:20px;
     z-index:1000;
-
     display:inline-block;
     background:#232833;
     color:white;
@@ -84,6 +82,16 @@ body{
 .creator-row{
     display:flex;
     gap:12px;
+    align-items:center;
+}
+
+.prompt-prefix{
+    background:#222836;
+    color:white;
+    padding:15px;
+    border-radius:12px;
+    white-space:nowrap;
+    font-size:16px;
 }
 
 .creator-row input{
@@ -164,8 +172,24 @@ footer{
     color:#798092;
     padding-bottom:40px;
 }
+
+@media (max-width: 768px){
+    .creator-row{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .prompt-prefix{
+        text-align:center;
+    }
+
+    .hero h1{
+        font-size:2.7rem;
+    }
+}
 </style>
 </head>
+
 <body>
 
 <a
@@ -194,10 +218,14 @@ footer{
 
         <div class="creator-row">
 
+            <span class="prompt-prefix">
+                Make an extension that...
+            </span>
+
             <input
                 type="text"
                 id="extensionPrompt"
-                placeholder="Describe your extension"
+                placeholder="blocks YouTube Shorts"
                 onkeydown="if(event.key==='Enter') createExtension()"
             >
 
@@ -289,12 +317,21 @@ footer{
 function createExtension() {
 
     const userPrompt =
-        document.getElementById("extensionPrompt")
-        .value
-        .trim();
+        document
+            .getElementById("extensionPrompt")
+            .value
+            .trim();
 
     if (!userPrompt) {
         alert("Please describe your extension.");
+        return;
+    }
+
+    const proceed = confirm(
+        "Heads up! You're about to be redirected to claude.com. Continue?"
+    );
+
+    if (!proceed) {
         return;
     }
 
@@ -302,10 +339,7 @@ function createExtension() {
         "Make me a PhantomHaze extension (you can access the wiki here: https://raw.githubusercontent.com/PhantomHaze-Security/phantomhaze-extensions/refs/heads/main/claude-integration.md) that " +
         userPrompt;
 
-    const query =
-        finalPrompt
-        .split(/\s+/)
-        .join("+");
+    const query = encodeURIComponent(finalPrompt);
 
     window.open(
         "https://claude.ai/new?q=" + query,
